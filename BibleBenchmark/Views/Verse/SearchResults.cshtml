@@ -1,0 +1,38 @@
+﻿@model IEnumerable<BibleApp.Models.BibleVerse>
+
+<div class="container">
+    <br />
+    <div class="row">
+        <div class="col-sm-3">
+            <h4>Search Bible Text</h4>
+            <hr />
+            <form asp-action="SearchResults">
+                <div class="form-row">
+                    <select class="form-select" name="testament">
+                        <option value="1">Old Testament</option>
+                        <option value="2">New Testament</option>
+                        <option value="3">Both</option>
+                    </select>
+                    <br />
+                    <div class="col-auto">
+                        <input type="search" name="searchString" class="form-control rounded" placeholder="Enter KeyWord" aria-label="Search" aria-describedby="search-addon" required />
+                    </div>
+                    <br />
+                    <div class="col-auto">
+                        <input type="submit" class="btn btn-primary" value="Search" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-7">
+             @foreach (var item in Model) {
+                    <p>
+                    @item.BookName @item.Chapter:@item.Verse
+                    <br/>
+                    @item.Text
+                    </p>
+                    <hr/>
+               }
+        </div>
+    </div>
+</div>

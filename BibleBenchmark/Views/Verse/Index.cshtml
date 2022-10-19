@@ -1,0 +1,60 @@
+﻿@model BibleApp.Models.BibleVerse
+
+<div class="container">
+    <br />
+    <div class="row">
+        <img src="~/src/bible.png" height="300" width="600"/>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-sm-4">
+            <h4>Search Bible Verse</h4>
+            <hr />
+            <form asp-action="SearchVerse">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="BookName" class="control-label"></label>
+                    <input asp-for="BookName" class="form-control" placeholder="Genesis" required />
+                    <span asp-validation-for="BookName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Chapter" class="control-label"></label>
+                    <input asp-for="Chapter" class="form-control" placeholder="1" required />
+                    <span asp-validation-for="Chapter" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="VerseRange" class="control-label"></label>
+                    <input asp-for="VerseRange" class="form-control" placeholder="1-1"  required/>
+                    <span asp-validation-for="VerseRange" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Search" />
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-4">
+            <h4>Search Bible Text</h4>
+            <hr />
+            <form asp-action="SearchResults">
+                <div class="form-row">
+                    <select class="form-select" name="testament">
+                        <option value="1">Old Testament</option>
+                        <option value="2">New Testament</option>
+                        <option value="3">Both</option>
+                    </select>
+                    <br />
+                    <div class="col-auto">
+                        <input type="search" name="searchString" class="form-control rounded" placeholder="Enter KeyWord" aria-label="Search" aria-describedby="search-addon" required />
+                    </div>
+                    <br />
+                    <div class="col-auto">
+                        <input type="submit" class="btn btn-primary" value="Search" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

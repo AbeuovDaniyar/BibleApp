@@ -1,0 +1,47 @@
+﻿@model BibleApp.Models.BibleVerse
+
+<div class="container">
+    <br />
+    <div class="row">
+        <div class="col-sm-3">
+            <h4>Search Bible Verse</h4>
+            <hr />
+            <form asp-action="SearchVerse">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="BookName" class="control-label"></label>
+                    <input asp-for="BookName" class="form-control" placeholder="Genesis" required />
+                    <span asp-validation-for="BookName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Chapter" class="control-label"></label>
+                    <input asp-for="Chapter" class="form-control" placeholder="1" required />
+                    <span asp-validation-for="Chapter" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="VerseRange" class="control-label"></label>
+                    <input asp-for="VerseRange" class="form-control" placeholder="1-1" required />
+                    <span asp-validation-for="VerseRange" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Search" />
+                </div>
+            </form>
+        </div> 
+        <div class="col-sm-7">
+            <h4>@Html.DisplayFor(model => model.BookName) @Html.DisplayFor(model => model.Chapter):@Html.DisplayFor(model => model.VerseRange)</h4>
+            <hr />
+            @{
+                var i = Model.Verse;
+            }
+            <p>
+                @foreach (var v in Model.VerseRangeText)
+                {
+                    <small>@(i++)</small>@v
+
+                }
+            </p>
+        </div>
+    </div>
+</div>
