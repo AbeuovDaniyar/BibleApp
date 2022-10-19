@@ -42,12 +42,20 @@ namespace BibleApp.Controllers
             result = service.getBookNumber(searchVerse);
 
             //set verse range
-            char[] delimeterChars = { ' ', ',', '-' };
+            if (searchVerse.VerseRange.Contains("-"))
+            {
+                char[] delimeterChars = { '-' };
 
-            string[] verseRange = result.VerseRange.Split(delimeterChars);
+                string[] verseRange = result.VerseRange.Split(delimeterChars);
 
-            result.Verse = Convert.ToInt32(verseRange[0]);
-            result.LastVerse = Convert.ToInt32(verseRange[1]);
+                result.Verse = Convert.ToInt32(verseRange[0]);
+                result.LastVerse = Convert.ToInt32(verseRange[1]);
+            }
+            else 
+            {
+                result.Verse = Convert.ToInt32(searchVerse.VerseRange);
+                result.LastVerse = Convert.ToInt32(searchVerse.VerseRange);
+            }   
 
             return View(service.searchVerse(result));
         }
