@@ -45,7 +45,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This is a project for LogopedLand speech center to deliver a modern website that suits their style and taste. 
+This is a school project for my class in Cloud Computing 
 
 The project features highlights:
 * Search by verse
